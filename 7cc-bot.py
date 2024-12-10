@@ -1,6 +1,4 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext, MessageHandler
-from telegram.ext.filters import Filters
+
 
 # Вставьте сюда токен вашего бота
 TOKEN = '7942164878:AAEvsE6uQsClEZhI12ikeUZ4sOxcyiecEPg'
