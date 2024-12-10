@@ -1,1 +1,1 @@
-worker: python 7c-bot.py
+worker: python 7cc-bot.py
