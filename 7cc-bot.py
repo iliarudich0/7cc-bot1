@@ -53,7 +53,7 @@ if __name__ == "__main__":  # No indentation before this
     
     application = Application.builder().token(TOKEN).build()
     
-    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("start",)
     
     try:  # Indent this line with 4 spaces
         application.run_polling()  # Indent with 4 spaces after `try:`
