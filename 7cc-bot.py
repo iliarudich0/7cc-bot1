@@ -34,7 +34,7 @@ questions = {
 }
 
 # Основная логика вашего бота должна быть здесь
-if __name__ == "__main__":
+
    if __name__ == "__main__":
     logging.info("Bot started. Configuring handlers and starting polling.")
     
