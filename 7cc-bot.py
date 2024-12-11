@@ -135,15 +135,22 @@ def main() -> None:
     # Останавливаем бота при нажатии Ctrl-C или получении сигнала завершения
     updater.idle()
 
-if __name__ == "__main__":  # No indentation before this
+if __name__ == "__main__":
     logging.info("Bot started. Configuring handlers and starting polling.")
     
-    # 4 spaces of indentation for the application and handlers
+    # Create the bot application instance
     application = Application.builder().token(TOKEN).build()
     
-    application.add_handler(CommandHandler("start", start))
-    
-    try:  # 4 spaces of indentation for try
-        application.run_polling()  # 8 spaces of indentation inside try
-    except Exception as e:  # 4 spaces of indentation for except (same as try)
-        logging.error(f"Error while running the bot: {e}")  # 8 spaces of indentation inside except
+    async def delete_webhook():
+        """Delete any existing webhook to avoid conflicts with polling."""
+        await application.bot.delete_webhook()  # 🔥 Delete webhook here
+        logging.info("Webhook deleted successfully.")
+
+    # Ensure the webhook is deleted before polling starts
+    application.create_task(delete_webhook())
+
+    # Run polling with drop_pending_updates to clear old messages
+    try:
+        application.run_polling(drop_pending_updates=True)
+    except Exception as e:
+        logging.error(f"Error while running the bot: {e}")
