@@ -1,7 +1,22 @@
+import
+ logging 
+
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackContext
 import os
 from dotenv import load_dotenv
+
+# 🔥 Set up logging immediately after imports
+
+logging.basicConfig(
+format
+=
+'%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+, level=logging.INFO)
+
+# Load environment variables from .env file
+
+load_dotenv()
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()
@@ -43,9 +58,8 @@ if __name__ == "__main__":
     # Add a command handler for /start command
     application.add_handler(CommandHandler("start", start))
     
-    try:
-        # Run polling to keep the bot running
-        application.run_polling()
-    except Exception as e:
-        logging.error(f"Error while running the bot: {e}")
+   try:
+    application.run_polling()
+except Exception as e:
+    logging.error(f"Error while running the bot: {e}")
 
