@@ -48,17 +48,15 @@ questions = {
 }
 
 # Основная логика вашего бота должна быть здесь
-if __name__ == "__main__":
+if __name__ == "__main__":  # No indentation before this
     logging.info("Bot started. Configuring handlers and starting polling.")
     
-    # Create the bot application instance
     application = Application.builder().token(TOKEN).build()
     
-    # Add a command handler for /start command
     application.add_handler(CommandHandler("start", start))
     
-   try:
-    application.run_polling()
-except Exception as e:
-    logging.error(f"Error while running the bot: {e}")
+    try:  # Indent this line with 4 spaces
+        application.run_polling()  # Indent with 4 spaces after `try:`
+    except Exception as e:  # Indent this line with 4 spaces to match the `try`
+        logging.error(f"Error while running the bot: {e}")  # Indent with 8 spaces inside the except block
 
