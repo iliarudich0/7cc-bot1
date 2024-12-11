@@ -35,4 +35,18 @@ questions = {
 
 # Основная логика вашего бота должна быть здесь
 if __name__ == "__main__":
-    print("Бот запущен. Настройте обработчики и начните polling.")
+   if __name__ == "__main__":
+    logging.info("Bot started. Configuring handlers and starting polling.")
+    
+    # Create the bot application instance
+    application = Application.builder().token(TOKEN).build()
+    
+    # Add a command handler for /start command
+    application.add_handler(CommandHandler("start", start))
+    
+    try:
+        # Run polling to keep the bot running
+        application.run_polling()
+    except Exception as e:
+        logging.error(f"Error while running the bot: {e}")
+
