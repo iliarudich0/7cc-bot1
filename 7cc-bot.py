@@ -139,15 +139,10 @@ if __name__ == "__main__":
     logging.info("Bot started. Configuring handlers and starting polling.")
     
     # Create the bot application instance
-    application = Application.builder().token(TOKEN).build()
-    
-    async def delete_webhook():
-        """Delete any existing webhook to avoid conflicts with polling."""
-        await application.bot.delete_webhook()  # 🔥 Delete webhook here
-        logging.info("Webhook deleted successfully.")
+   async def post_init(application: Application) -> None:
+    await application.bot.delete_webhook()
+    logging.info("Webhook deleted successfully.")
 
-    # Ensure the webhook is deleted before polling starts
-    application.create_task(delete_webhook())
 
     # Run polling with drop_pending_updates to clear old messages
     try:
