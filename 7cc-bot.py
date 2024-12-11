@@ -147,5 +147,4 @@ if __name__ == "__main__":
     # Run polling with drop_pending_updates to clear old messages
     try:
         application.run_polling(drop_pending_updates=True)
-    except Exception as e:
-        logging.error(f"Error while running the bot: {e}")
+    
